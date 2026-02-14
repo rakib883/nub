@@ -9,7 +9,7 @@ const menuItems = [
   { name: "Trainers", path: "/trainers" },
   { name: "Admission", path: "/admission" },
   { name: "Contact", path: "/contact" },
-   { name: "Student-Portal", path: "/student" },
+  { name: "Student-Portal", path: "/student-portal" },
 ];
 
 // 🔹 Header Component
