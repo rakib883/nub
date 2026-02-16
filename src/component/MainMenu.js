@@ -4,7 +4,7 @@ import Link from "next/link";
 // 🔹 Menu items as array (same file)
 const menuItems = [
   { name: "Home", path: "/" },
-  { name: "About Us", path: "/about" },
+  { name: "About Us", path: "/about-us" },
   { name: "Courses", path: "/courses" },
   { name: "Trainers", path: "/trainers" },
   { name: "Admission", path: "/admission" },
