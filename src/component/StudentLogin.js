@@ -16,7 +16,7 @@ const StudentLogin = () => {
     const toastId = toast.loading("Verifying credentials...");
 
     try {
-      const res = await fetch('https://nub-bakend.vercel.app/api/student-login', { // 👈 Relative path use kora best
+      const res = await fetch('http://localhost:3000/api/student-login', { // 👈 Relative path use kora best
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
