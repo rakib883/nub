@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { FaUser, FaClock, FaHeart, FaStar, FaCartPlus } from 'react-icons/fa';
+import Link from 'next/link';
 
 const CourseSection = () => {
   const [courses, setCourses] = useState([]);
@@ -96,10 +97,12 @@ const CourseSection = () => {
                     {course.description || "Master the latest skills with our comprehensive curriculum."}
                   </p>
 
-                  <button className="w-full mt-auto bg-[#0f172a] hover:bg-blue-900 text-white font-bold py-3.5 rounded-md shadow-lg flex items-center justify-center gap-3 transition-all active:scale-95 group/btn text-sm">
+                <Link href={`/admission/${course._id}`} className="w-full mt-auto">
+                  <button className="w-full bg-[#0f172a] hover:bg-blue-900 text-white font-bold py-3.5 rounded-md shadow-lg flex items-center justify-center gap-3 transition-all active:scale-95 group/btn text-sm">
                     <FaCartPlus className="text-[#FFD233] group-hover/btn:animate-bounce" /> 
                     Get Admission
                   </button>
+                </Link> 
                 </div>
 
                 <div className="flex items-center justify-between border-t border-gray-100 px-6 py-4 bg-gray-50 text-[13px] font-medium text-gray-600">
