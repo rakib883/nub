@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { FaUser, FaClock, FaHeart, FaStar, FaCalendarAlt } from 'react-icons/fa';
+import Link from 'next/link'; // 
+import { FaUser, FaClock, FaHeart, FaStar,  SlCalender } from 'react-icons/fa6'; // ✅ আপনার পছন্দ অনুযায়ী Fa6 ব্যবহার করা হয়েছে
 
 const CourseCard = ({ course }) => (
   <div className="bg-white rounded-sm overflow-hidden shadow-lg group flex flex-col h-full border-b-4 border-transparent hover:border-blue-600 transition-all">
@@ -48,10 +49,13 @@ const CourseCard = ({ course }) => (
         {course.description || "Join our upcoming batch and master this skill with industry experts."}
       </p>
 
-      {/* ✅ Admission Button */}
-      <button className="w-full mt-5 bg-[#002147] hover:bg-blue-900 text-white font-bold py-3 rounded text-sm transition-all active:scale-95 shadow-md">
-         Admission Open
-      </button>
+      {/* ✅ Admission Button with Dynamic Route */}
+      {/* ধরি আপনার ডিটেইলস পেজ রুট হবে /courses/[id] */}
+      <Link href={`/admission/${course._id}`}>
+        <button className="w-full mt-5 bg-[#002147] hover:bg-blue-900 text-white font-bold py-3 rounded text-sm transition-all active:scale-95 shadow-md">
+            Admission Open
+        </button>
+      </Link>
     </div>
 
     {/* Footer Info */}
@@ -60,7 +64,7 @@ const CourseCard = ({ course }) => (
         <FaUser className="text-[#FFD233]"/> {course.seats} Seats
       </span>
       <span className="flex items-center gap-1 font-bold">
-        <FaCalendarAlt className="text-[#FFD233]"/> {course.upcomingDate || "Coming Soon"}
+         {course.upcomingDate || "Coming Soon"}
       </span>
       <span className="flex items-center gap-1 cursor-pointer hover:text-red-500">
         <FaHeart className="text-[#FFD233]"/> Save
@@ -76,12 +80,10 @@ export default function CoursePage() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        // ✅ Tomar backend link theke data fetch kora hochhe
         const response = await fetch('https://nub-bakend.vercel.app/api/all-course');
         const result = await response.json();
 
         if (result.success && Array.isArray(result.data)) {
-          // ✅ Shudhu 'Upcoming' status-er course gulo filter korlam
           const upcoming = result.data.filter(c => c.status === "Upcoming");
           setCourses(upcoming);
         }
@@ -108,7 +110,6 @@ export default function CoursePage() {
     <div className="w-full bg-[#f8fafc]">
       <section className="max-w-7xl mx-auto py-20 px-4">
         
-        {/* Title Section */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-black text-[#002147] mb-4 uppercase tracking-tight">
             Upcoming Programs
@@ -116,7 +117,6 @@ export default function CoursePage() {
           <div className="h-1.5 w-20 bg-blue-600 mx-auto rounded-full"></div>
         </div>
 
-        {/* Course Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {courses.length > 0 ? (
             courses.map(course => (
