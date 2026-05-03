@@ -80,7 +80,7 @@ const Header = () => {
              {/* Ekhane MainMenu component ta mobile view-te call hobe */}
              <div className="flex flex-col gap-4">
                 <MainMenu />
-                <a href="/admission" className="sm:hidden block text-center bg-[#f1c40f] text-white font-bold py-3 rounded-sm">
+                <a href="/student-portal" className="sm:hidden block text-center bg-[#f1c40f] text-white font-bold py-3 rounded-sm">
                   Apply Now
                 </a>
              </div>
